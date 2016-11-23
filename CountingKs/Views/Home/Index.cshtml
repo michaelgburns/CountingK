@@ -9,6 +9,11 @@
   </section>
 }
 <h3>Some sample results from the database:</h3>
+
+@Html.RouteLink("foods api controller", new  {httproute = "", controller = "Foods" })
+
+@Html.RouteLink("foods api controller with id", new { httproute = "", controller = "Foods", id = 1})
+
 @foreach (var food in Model)
 {
   <div>@food.Description</div>
