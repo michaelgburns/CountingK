@@ -10,31 +10,35 @@ using System.Web.Http;
 
 namespace CountingKs.Controllers
 {
-    public class FoodsController : ApiController
+    public class FoodsController : BaseApiController
     {
-        ICountingKsRepository _repo;
-        ModelFactory _modelFactory;
+        //ICountingKsRepository _repo;
+        //ModelFactory _modelFactory;
 
-        public FoodsController(ICountingKsRepository repo)
+        //public FoodsController(ICountingKsRepository repo)
+        //{
+        //    _repo = repo;
+        //    _modelFactory = new ModelFactory();
+        //}
+
+        public FoodsController(ICountingKsRepository repo) : base(repo)
         {
-            _repo = repo;
-            _modelFactory = new ModelFactory();
         }
 
         public IEnumerable<FoodModel> Get()
         {
-            var results = _repo.GetAllFoodsWithMeasures()
+            var results = TheRepository.GetAllFoodsWithMeasures()
                               .OrderBy(f => f.Description)
                               .Take(25)
                               .ToList()
-                              .Select(f => _modelFactory.Create(f));
+                              .Select(f => TheModelFactory.Create(f));
 
             return results;
         }
 
         public FoodModel Get(int foodid)
         {
-            return _modelFactory.Create(_repo.GetFood(foodid));
+            return TheModelFactory.Create(TheRepository.GetFood(foodid));
         }
     }
 }
