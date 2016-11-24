@@ -12,7 +12,11 @@
 
 @Html.RouteLink("foods api controller", new  {httproute = "", controller = "Foods" })
 
-@Html.RouteLink("foods api controller with id", new { httproute = "", controller = "Foods", id = 1})
+@Html.RouteLink("foods api controller with id", new { httproute = "", controller = "Foods", foodid = 1})
+
+@Html.RouteLink("Get measures with_foodlink", new { httproute = "", controller = "Measures", foodid = 1 })
+
+@Html.RouteLink("Get measures with_foodlink optional measure id", new { httproute = "", controller = "Measures", foodid = 1, id = 1 })
 
 @foreach (var food in Model)
 {
