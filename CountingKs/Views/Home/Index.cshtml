@@ -17,6 +17,10 @@
 @Html.RouteLink("Get measures with_foodlink", new { httproute = "", controller = "Measures", foodid = 1 })
 
 @Html.RouteLink("Get measures with_foodlink optional measure id", new { httproute = "", controller = "Measures", foodid = 1, id = 1 })
+<br />
+<br />
+@Html.RouteLink("Get all diaries", new { httproute = "", controller = "diaries" })
+
 
 @foreach (var food in Model)
 {
